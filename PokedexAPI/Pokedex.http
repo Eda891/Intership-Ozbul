@@ -1,0 +1,13 @@
+GET http://localhost:5084/Pokedex
+
+###
+
+GET http://localhost:5084/Pokedex/1
+
+###
+POST http://localhost:5084/Pokedex
+Content-Type:application/json
+
+{
+          "name":"Brooze"
+}
