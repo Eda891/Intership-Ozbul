@@ -2,7 +2,7 @@ GET http://localhost:5084/Pokedex
 
 ###
 
-GET http://localhost:5084/Pokedex/1
+GET http://localhost:5084/Pokedex/5
 
 ###
 POST http://localhost:5084/Pokedex
@@ -11,3 +11,14 @@ Content-Type:application/json
 {
           "name":"Brooze"
 }
+
+###
+PUT http://localhost:5084/Pokedex/5
+Content-Type:application/json
+
+{
+    "name": "Lucky Poke"
+}
+
+###
+DELETE http://localhost:5084/Pokedex/1
