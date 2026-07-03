@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\Pokedex.csproj": {}
+    "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\PokeStore.csproj": {}
   },
   "projects": {
-    "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\Pokedex.csproj": {
+    "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\PokeStore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\Pokedex.csproj",
-        "projectName": "Pokedex",
-        "projectPath": "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\Pokedex.csproj",
+        "projectUniqueName": "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\PokeStore.csproj",
+        "projectName": "PokeStore",
+        "projectPath": "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\PokeStore.csproj",
         "packagesPath": "C:\\Users\\obakca\\.nuget\\packages\\",
         "outputPath": "c:\\Users\\obakca\\Pokedex\\Intership-Ozbul\\PokedexAPI\\obj\\",
         "projectStyle": "PackageReference",

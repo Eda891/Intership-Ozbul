@@ -1,7 +1,6 @@
 GET http://localhost:5084/Pokedex
 
 ###
-
 GET http://localhost:5084/Pokedex/5
 
 ###
@@ -9,15 +8,23 @@ POST http://localhost:5084/Pokedex
 Content-Type:application/json
 
 {
-          "name":"Brooze"
+          "name":"Brooze",
+          "height":"3' 03",
+          "weight": "28.7 lbs",
+          "category":"",
+          "abilities":"Overgrow"
 }
 
 ###
-PUT http://localhost:5084/Pokedex/5
+PUT http://localhost:5084/Pokedex/4
 Content-Type:application/json
 
 {
-    "name": "Lucky Poke"
+    "name":"Name-less",
+    "height":"3' 03",
+    "weight": "28.7 lbs",
+    "category":"Seed",
+    "abilities":"Overgrow"
 }
 
 ###
