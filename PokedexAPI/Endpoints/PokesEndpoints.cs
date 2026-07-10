@@ -1,5 +1,7 @@
 using System;
+using Pokedex.Api.Data;
 using Pokedex.Api.Dtos;
+using Pokedex.Api.Models;
 namespace Pokedex.APİ.Endpoints;
 
 public static class PokeEndpoints
@@ -27,19 +29,30 @@ public static class PokeEndpoints
 
 
                     //POST /Pokedex
-                    group.MapPost("/",(CreatePokeDto newPoke)=>
+                    group.MapPost("/",(CreatePokeDto newPoke, PokedexContext dbContext)=>
                     {
-                             
-                    PokeDto poke=new(
-                              Pokedex.Count+1,
-                              newPoke.Name,
-                              newPoke.Height,
-                              newPoke.Weight,
-                              newPoke.Category,
-                              newPoke.Abilities
-                    );
-                    Pokedex.Add(poke);
 
+                    Poke poke = new()
+                    {
+                              Name=newPoke.Name,
+                              Categoryİd=newPoke.CategoryId,
+                              Height=newPoke.Height,
+                              Weight=newPoke.Weight,
+                              Abilities=newPoke.Abilities
+                    };
+                    // PokeDto poke=new(
+                    //           Pokedex.Count+1,
+                    //           newPoke.Name,
+                    //           newPoke.Height,
+                    //           newPoke.Weight,
+                    //           newPoke.Category,
+                    //           newPoke.Abilities
+                    // );
+                    // Pokedex.Add(poke);
+
+                    dbContext.Pokes.Add(poke);
+                    dbContext.SaveChanges();
+                    
                     return Results.CreatedAtRoute("GetPoke",new {id=poke.id},poke);
                     });
 
