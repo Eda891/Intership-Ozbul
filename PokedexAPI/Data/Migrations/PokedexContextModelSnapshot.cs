@@ -6,7 +6,7 @@ using Pokedex.Api.Data;
 
 #nullable disable
 
-namespace Pokedex.Data.Migrations
+namespace Pokedex.Migrations
 {
     [DbContext(typeof(PokedexContext))]
     partial class PokedexContextModelSnapshot : ModelSnapshot
@@ -41,10 +41,7 @@ namespace Pokedex.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Categoryid")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Categoryİd")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Height")
@@ -61,7 +58,7 @@ namespace Pokedex.Data.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Categoryid");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Pokes");
                 });
@@ -70,7 +67,9 @@ namespace Pokedex.Data.Migrations
                 {
                     b.HasOne("Pokedex.Api.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("Categoryid");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });

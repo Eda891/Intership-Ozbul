@@ -1,4 +1,5 @@
 using System;
+using Microsoft.EntityFrameworkCore;
 using Pokedex.Api.Data;
 using Pokedex.Api.Dtos;
 using Pokedex.Api.Models;
@@ -6,87 +7,104 @@ namespace Pokedex.APİ.Endpoints;
 
 public static class PokeEndpoints
 {
-          private static readonly List<PokeDto> Pokedex = [
-          new(1,"Bulbasaur","2' 04","15.2 lbs","Seed","Overgrow"),
-          new(2,"Venusaur","6' 07","220.5 lbs","Seed","Overgrow"),
-          new(3,"Charmander","2' 00","18.7 lbs","Lizard","Blaze")
-          ];
-
+          
           public static void MapPokeEndpoints(this WebApplication app)
           {
                     var group=app.MapGroup("/Pokedex");
 
                     //GET /Pokedex
-                    group.MapGet("/",()=>Pokedex);
+                    group.MapGet("/", async(PokedexContext dbContext)=>
+                              await dbContext.Pokes.Include(poke => poke.Category).
+                              Select(poke=> new PokeDto(
+                                        poke.id,
+                                        poke.Name,
+                                        poke.Weight,
+                                        poke.Height,
+                                        poke.Category!.Name,
+                                        poke.Abilities
+                              ))
+                              .AsNoTracking()
+                              .ToListAsync()
+                    );
 
 
                     //GET /Pokedex/1
-                    group.MapGet("/Pokedex/{id}",(int id)=>{
-                    var Poke=Pokedex.Find(Poke=>Poke.id==id);
-                    return Poke is null?Results.NotFound():Results.Ok(Poke);
+                    group.MapGet("/{id}", async(int id, PokedexContext dbContext)=>{
+
+                    var poke=await dbContext.Pokes.FindAsync(id);
+
+                    return poke is null?Results.NotFound():Results.Ok(
+
+                    new PokeDetailsDto(
+                              poke.id,
+                              poke.Name,
+                              poke.Weight,
+                              poke.Height,
+                              poke.CategoryId,
+                              poke.Abilities
+                    )
+                    );
                     }).WithName("GetPoke");
 
 
 
                     //POST /Pokedex
-                    group.MapPost("/",(CreatePokeDto newPoke, PokedexContext dbContext)=>
+                    group.MapPost("/",async (CreatePokeDto newPoke, PokedexContext dbContext)=>
                     {
 
                     Poke poke = new()
                     {
                               Name=newPoke.Name,
-                              Categoryİd=newPoke.CategoryId,
+                              CategoryId=newPoke.CategoryId,
                               Height=newPoke.Height,
                               Weight=newPoke.Weight,
                               Abilities=newPoke.Abilities
                     };
-                    // PokeDto poke=new(
-                    //           Pokedex.Count+1,
-                    //           newPoke.Name,
-                    //           newPoke.Height,
-                    //           newPoke.Weight,
-                    //           newPoke.Category,
-                    //           newPoke.Abilities
-                    // );
-                    // Pokedex.Add(poke);
 
                     dbContext.Pokes.Add(poke);
-                    dbContext.SaveChanges();
-                    
-                    return Results.CreatedAtRoute("GetPoke",new {id=poke.id},poke);
+                    await dbContext.SaveChangesAsync();
+
+                    PokeDetailsDto pokeDto =new PokeDetailsDto(
+                              poke.id,
+                              poke.Name,
+                              poke.Weight,
+                              poke.Height,
+                              poke.CategoryId,
+                              poke.Abilities
+                    );
+
+                    return Results.CreatedAtRoute("GetPoke",new {id=pokeDto.id},pokeDto);
                     });
 
 
 
                     //PUT /Pokedex/1
-                    group.MapPut("/{id}", (int id, UpdatePokeDto updatedPoke) =>
+                    group.MapPut("/{id}", async (int id, UpdatePokeDto updatedPoke, PokedexContext dbContext) =>
                     {
-                    var index=Pokedex.FindIndex(Poke=>Poke.id==id);
-
-                    if (index == -1)
+                    var existingPoke= await dbContext.Pokes.FindAsync(id);
+                    if (existingPoke is null)
                     {
                     return Results.NotFound();
                     }
 
-                    Pokedex[index]=new PokeDto(
-                    id,
-                    updatedPoke.Name,
-                    updatedPoke.Height,
-                    updatedPoke.Weight,
-                    updatedPoke.Category,
-                    updatedPoke.Abilities
-                    );
+                    existingPoke.Name=updatedPoke.Name;
+                    existingPoke.CategoryId=updatedPoke.CategoryId;
+                    existingPoke.Abilities=updatedPoke.Abilities;
+                    existingPoke.Height=updatedPoke.Height;
+                    existingPoke.Weight=updatedPoke.Weight;
+
+                    await dbContext.SaveChangesAsync();
 
                     return Results.NoContent();
                     });
 
 
                     //DELETE /Pokedex/1
-                    group.MapDelete("/{id}", (int id)=>
+                    group.MapDelete("/{id}", async (int id, PokedexContext dbContext)=>
                     {
-                    Pokedex.RemoveAll(poke=>poke.id==id);
-
-                    return Results.NoContent();
+                              await dbContext.Pokes.Where(Poke=>Poke.id==id).ExecuteDeleteAsync();
+                              
+                              return Results.NoContent();
                     });
 
           }

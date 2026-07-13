@@ -7,6 +7,6 @@ public class Poke
           public required string Height{get; set;}
           public required string Weight{get; set;}
           public Category? Category{get; set;}
-          public int Categoryİd {get; set;}
+          public int CategoryId {get; set;}
           public required string Abilities{get; set;}
 }
