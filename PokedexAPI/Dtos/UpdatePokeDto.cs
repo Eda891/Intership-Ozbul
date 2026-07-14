@@ -5,6 +5,6 @@ public record UpdatePokeDto(
           [Required][StringLength(50)]string Name,
           [Required][StringLength(20)]string Height,
           [Required][StringLength(20)]string Weight,
-          [Required][StringLength(50)]string Category,
+          [Required][Range(1,50)]int  CategoryId,
           [Required][StringLength(50)]string Abilities    
 );
