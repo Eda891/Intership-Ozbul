@@ -1,1 +1,0 @@
-to run it write dotnet run into the terminal
