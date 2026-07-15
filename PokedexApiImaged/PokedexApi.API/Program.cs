@@ -2,7 +2,7 @@ using PokedexApi.Application;
 using PokedexApi.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
+//registers services, enables Swagger, starts the app.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>

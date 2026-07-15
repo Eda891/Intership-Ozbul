@@ -5,6 +5,7 @@ using PokedexApi.Infrastructure.Persistence;
 
 namespace PokedexApi.Infrastructure.Repositories
 {
+    //The actual implementation of IPokemonRepository; uses EF Core to read/write to SQLite
     public class PokemonRepository : IPokemonRepository
     {
         private readonly PokedexDbContext _context;

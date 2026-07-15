@@ -4,6 +4,7 @@ using PokedexApi.Domain.Entities;
 
 namespace PokedexApi.Application.Mapping
 {
+    //AutoMapper rules that automate Entity DTO conversions.
     public class MappingProfile : Profile
     {
         public MappingProfile()

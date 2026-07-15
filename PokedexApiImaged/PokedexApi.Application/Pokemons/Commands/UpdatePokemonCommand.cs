@@ -5,6 +5,7 @@ using PokedexApi.Domain.Interfaces;
 
 namespace PokedexApi.Application.Pokemons.Commands
 {
+    //deletes a record. DELETE
     public record UpdatePokemonCommand(UpdatePokemonRequest Request) : IRequest<bool>;
 
     public class UpdatePokemonCommandHandler : IRequestHandler<UpdatePokemonCommand, bool>

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PokedexApi.Application.DTOs
 {
-    // API'ye gelen ekleme isteği
+    //Input shapes for create (POST) endpoint with validation attributes
     public record CreatePokemonRequest(
         [Required][StringLength(50)] string Name,
         [Required][StringLength(20)] string Height,
@@ -12,7 +12,7 @@ namespace PokedexApi.Application.DTOs
         [StringLength(300)] string? ImageUrl
     );
 
-    // API'ye gelen güncelleme isteği
+    //Input shapes for update (PUT) endpoint with validation attributes
     public record UpdatePokemonRequest(
         int Id,
         [Required][StringLength(50)] string Name,

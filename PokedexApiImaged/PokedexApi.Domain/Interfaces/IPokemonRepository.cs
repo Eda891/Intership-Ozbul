@@ -2,6 +2,7 @@ using PokedexApi.Domain.Entities;
 
 namespace PokedexApi.Domain.Interfaces
 {
+    //The contract for database operations,just an interface, no real implementation here.
     public interface IPokemonRepository
     {
         Task<List<Pokemon>> GetAllAsync();

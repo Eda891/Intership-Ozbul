@@ -1,5 +1,6 @@
 namespace PokedexApi.Domain.Entities
 {
+    //The main data model
     public class Pokemon
     {
         public int Id { get; set; }

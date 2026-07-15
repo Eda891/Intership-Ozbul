@@ -7,6 +7,7 @@ using PokedexApi.Infrastructure.Repositories;
 
 namespace PokedexApi.Infrastructure
 {
+    //Registers the DbContext and Repository into the DI container, reads the SQLite connection string
     public static class ConfigureInfrastructureServices
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
