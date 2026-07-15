@@ -15,7 +15,7 @@ public static class PokeEndpoints
                     //GET /Pokedex
                     group.MapGet("/", async(PokedexContext dbContext)=>
                               await dbContext.Pokes.Include(poke => poke.Category).
-                              Select(poke=> new PokeDto(
+                              Select(poke=> new PokeSummaryDto(
                                         poke.id,
                                         poke.Name,
                                         poke.Weight,
