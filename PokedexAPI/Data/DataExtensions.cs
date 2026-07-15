@@ -2,7 +2,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Pokedex.Api.Data;
 using Pokedex.Api.Models;
-
+//this has the starter categories
+//if the table's empty; MigrateDb() applies pending EF migrations on startup so the DB schema stays in sync.
 
 public static class DataExtensions
 {

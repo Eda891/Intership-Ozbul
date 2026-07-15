@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+//Input shapes for update (PUT) endpoint with validation attributes
 namespace Pokedex.Api.Dtos;
 public record UpdatePokeDto(
           [Required][StringLength(50)]string Name,

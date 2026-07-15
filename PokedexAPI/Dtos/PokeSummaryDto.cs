@@ -1,4 +1,5 @@
 namespace Pokedex.Api.Dtos;
+//Used for the list endpoint. first GET.
 public record PokeSummaryDto(
           int id,
           string Name,
