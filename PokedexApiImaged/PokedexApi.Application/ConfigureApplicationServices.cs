@@ -3,6 +3,7 @@ using System.Reflection;
 
 namespace PokedexApi.Application
 {
+    //Registers MediatR and AutoMapper into the DI container.
     public static class ConfigureApplicationServices
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)

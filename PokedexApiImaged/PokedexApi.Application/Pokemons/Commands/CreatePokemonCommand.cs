@@ -6,6 +6,7 @@ using PokedexApi.Domain.Interfaces;
 
 namespace PokedexApi.Application.Pokemons.Commands
 {
+    //adds a new record POST
     public record CreatePokemonCommand(CreatePokemonRequest Request) : IRequest<PokemonResponse>;
 
     public class CreatePokemonCommandHandler : IRequestHandler<CreatePokemonCommand, PokemonResponse>

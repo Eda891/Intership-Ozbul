@@ -5,6 +5,8 @@ using PokedexApi.Application.Pokemons.Queries;
 
 namespace PokedexApi.API.Controllers
 {
+    //The HTTP endpoints.
+    //Each one sends the matching Command/Query through Mediator.
     public class PokemonController : ApiControllerBase
     {
         [HttpGet]

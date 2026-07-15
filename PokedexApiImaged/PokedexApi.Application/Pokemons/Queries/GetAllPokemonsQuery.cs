@@ -9,6 +9,7 @@ namespace PokedexApi.Application.Pokemons.Queries
     public record GetAllPokemonsQuery : IRequest<List<PokemonResponse>>;
 
     // İsteği karşılayan işleyici (Handler)
+    //Used for the full list. first GET.
     public class GetAllPokemonsQueryHandler : IRequestHandler<GetAllPokemonsQuery, List<PokemonResponse>>
     {
         private readonly IPokemonRepository _repository;

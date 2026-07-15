@@ -3,6 +3,7 @@ using PokedexApi.Domain.Interfaces;
 
 namespace PokedexApi.Application.Pokemons.Commands
 {
+    //updates an existing record. PUT
     public record DeletePokemonCommand(int Id) : IRequest<bool>;
 
     public class DeletePokemonCommandHandler : IRequestHandler<DeletePokemonCommand, bool>

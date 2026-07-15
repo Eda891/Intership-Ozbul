@@ -5,6 +5,7 @@ using PokedexApi.Domain.Interfaces;
 
 namespace PokedexApi.Application.Pokemons.Queries
 {
+    //fetches a single record by id. second GET
     public record GetPokemonByIdQuery(int Id) : IRequest<PokemonResponse?>;
 
     public class GetPokemonByIdQueryHandler : IRequestHandler<GetPokemonByIdQuery, PokemonResponse?>
