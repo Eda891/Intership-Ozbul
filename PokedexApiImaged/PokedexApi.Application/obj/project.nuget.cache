@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "LdnEWejO+nI=",
+  "success": true,
+  "projectFilePath": "C:\\newProjects\\Intership-Ozbul\\PokedexApiImaged\\PokedexApi.Application\\PokedexApi.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\obakca\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\obakca\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\obakca\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\obakca\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\obakca\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\obakca\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "C:\\newProjects\\Intership-Ozbul\\PokedexApiImaged\\PokedexApi.Application\\PokedexApi.Application.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\newProjects\\Intership-Ozbul\\PokedexApiImaged\\PokedexApi.Application\\PokedexApi.Application.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

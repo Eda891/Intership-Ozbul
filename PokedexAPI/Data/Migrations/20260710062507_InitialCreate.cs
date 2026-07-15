@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-
+//migration that creates the Category and Pokes tables.
+//EF generates them from my models.
 #nullable disable
 
 namespace Pokedex.Migrations

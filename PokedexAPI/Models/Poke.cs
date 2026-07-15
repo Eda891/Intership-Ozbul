@@ -1,5 +1,5 @@
 namespace Pokedex.Api.Models;
-
+//in the POST it is used
 public class Poke
 {
           public int id {get; set;}
