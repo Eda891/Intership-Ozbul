@@ -1,5 +1,5 @@
 namespace Pokedex.Api.Dtos;
-public record PokeDto(
+public record PokeSummaryDto(
           int id,
           string Name,
           string Height,
