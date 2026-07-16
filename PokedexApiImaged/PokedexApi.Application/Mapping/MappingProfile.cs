@@ -12,6 +12,8 @@ namespace PokedexApi.Application.Mapping
             CreateMap<Pokemon, PokemonResponse>();
             CreateMap<CreatePokemonRequest, Pokemon>();
             CreateMap<UpdatePokemonRequest, Pokemon>();
+            CreateMap<PokemonStats, PokemonStatsDto>();
+            CreateMap<PokemonStatsDto, PokemonStats>();
         }
     }
 }
