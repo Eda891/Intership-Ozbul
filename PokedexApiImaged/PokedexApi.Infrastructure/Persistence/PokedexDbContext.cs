@@ -11,5 +11,11 @@ namespace PokedexApi.Infrastructure.Persistence
         }
 
         public DbSet<Pokemon> Pokemons => Set<Pokemon>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Stats are not stored in a separate table, but as columns in the Pokémon table (owned type)
+            modelBuilder.Entity<Pokemon>().OwnsOne(p => p.Stats);
+        }
     }
 }

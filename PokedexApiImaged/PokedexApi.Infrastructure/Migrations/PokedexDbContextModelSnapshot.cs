@@ -30,6 +30,10 @@ namespace PokedexApi.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("FlavorText")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Height")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -42,6 +46,14 @@ namespace PokedexApi.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Weaknesses")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Weight")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -49,6 +61,43 @@ namespace PokedexApi.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pokemons");
+                });
+
+            modelBuilder.Entity("PokedexApi.Domain.Entities.Pokemon", b =>
+                {
+                    b.OwnsOne("PokedexApi.Domain.Entities.PokemonStats", "Stats", b1 =>
+                        {
+                            b1.Property<int>("PokemonId")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("Attack")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("Defense")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("Hp")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("SpecialAttack")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("SpecialDefense")
+                                .HasColumnType("INTEGER");
+
+                            b1.Property<int>("Speed")
+                                .HasColumnType("INTEGER");
+
+                            b1.HasKey("PokemonId");
+
+                            b1.ToTable("Pokemons");
+
+                            b1.WithOwner()
+                                .HasForeignKey("PokemonId");
+                        });
+
+                    b.Navigation("Stats")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

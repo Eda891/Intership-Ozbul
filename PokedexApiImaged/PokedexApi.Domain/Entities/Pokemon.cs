@@ -10,5 +10,11 @@ namespace PokedexApi.Domain.Entities
         public string Category { get; set; } = string.Empty;
         public string Abilities { get; set; } = string.Empty;
         public string ImageUrl { get; set; } = string.Empty;
+        public string Type { get; set; } = string.Empty;
+        public string Weaknesses { get; set; } = string.Empty;
+        public string FlavorText { get; set; } = string.Empty;
+
+        // Stats bölümü artık ayrı bir nesne altında
+        public PokemonStats Stats { get; set; } = new();
     }
 }
